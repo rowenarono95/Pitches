@@ -1,7 +1,11 @@
 {% extends 'base.html'%}
 
-    {% block content %}
-    
-    <a class="btn btn-outline-white btn-md" href="{{url_for('main.new_pitch')}}"><i class="fas fa-clone left"></i>Create Pitch</a>
+{% block content %}
 
-    {% endblock %}
+<a class="btn btn-outline-white btn-md" href="{{url_for('main.new_pitch')}}"><i class="fas fa-clone left"></i>Create
+    Pitch</a>
+<a class="list-group-item list-group-item-light" href="{{ url_for('main.display_interview') }}">INTERVIEW</a>
+<a class="list-group-item list-group-item-light" href="{{ url_for('main.display_advertisement') }}">ADVERTISEMENT</a>
+<a class="list-group-item list-group-item-light" href="{{ url_for('main.display_product') }}">PRODUCT</a>
+
+{% endblock %}

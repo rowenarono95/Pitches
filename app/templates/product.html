@@ -1,0 +1,11 @@
+{% extends 'base.html'%}
+
+
+{% block content %}
+{% for X in productPitches %} 
+
+<h3>{{X.pitch_category}}</h3>
+<p>{{X.pitch_comment}}</p>
+
+{% endfor %}
+{% endblock %}

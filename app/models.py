@@ -45,9 +45,9 @@ class Pitches(db.Model):
         db.session.commit()
     @classmethod
     def get_pitches(cls,category):
-        pitches = Pitch.query.filter_by(pitch_category=category).all()
+        pitches = Pitches.query.filter_by(pitch_category=category).all()
         return pitches
     @classmethod
     def getPitchId(cls,id):
-        pitch = Pitch.query.filter_by(pitch_id=id).first()
+        pitch = Pitches.query.filter_by(pitch_id=id).first()
         return pitch   

@@ -72,3 +72,18 @@ def update_pic(uname):
         user.profile_pic_path = path
         db.session.commit()
     return redirect(url_for('main.profile',uname=uname))
+
+@main.route('/category/interview', methods=['POST','GET'])
+def display_interview():
+    pitches = Pitches.get_pitches('interview')
+    return render_template('interview.html',interviewPitches=pitches)
+
+@main.route('/category/advertisement', methods=['POST','GET'])
+def display_advertisement():
+    pitches = Pitches.get_pitches('advertisement')
+    return render_template('advertisement.html',advertisementPitches=pitches)
+
+@main.route('/category/product', methods=['POST','GET'])
+def display_product():
+    pitches = Pitches.get_pitches('product')
+    return render_template('product.html',productPitches=pitches)        
