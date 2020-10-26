@@ -4,6 +4,7 @@ from . import auth
 from ..models import User
 from .forms import LoginForm,RegistrationForm
 from .. import db
+from ..email import mail_message
 
 
 @auth.route('/login',methods=['GET','POST'])
@@ -28,7 +29,7 @@ def register():
         db.session.add(user)
         db.session.commit()
 
-        # mail_message("Welcome to the Best Pitch","email/welcome_user",user.email,user=user)
+        mail_message("Welcome to pitch hub","email/welcome_user",user.email,user=user)
         return redirect(url_for('auth.login'))
         title = "New Account"
     return render_template('auth/register.html',registration_form = form)
@@ -38,3 +39,4 @@ def register():
 def logout():
     logout_user()
     return redirect(url_for("main.index"))
+
