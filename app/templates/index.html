@@ -1,11 +1,16 @@
 {% extends 'base.html'%}
 
-{% block content %}
 
-<a class="btn btn-outline-white btn-md" href="{{url_for('main.new_pitch')}}"><i class="fas fa-clone left"></i>Create
+{% block content %}
+<div class="img" style="background-image: url(../static/photos/imageflask2.jpeg);"></div>
+<div class="container-fluid">
+
+<a class="btn btn-outline-black btn-md" href="{{url_for('main.new_pitch')}}"><i class="fas fa-clone left"></i>Create
     Pitch</a>
 <a class="list-group-item list-group-item-light" href="{{ url_for('main.display_interview') }}">INTERVIEW</a>
 <a class="list-group-item list-group-item-light" href="{{ url_for('main.display_advertisement') }}">ADVERTISEMENT</a>
 <a class="list-group-item list-group-item-light" href="{{ url_for('main.display_product') }}">PRODUCT</a>
 
 {% endblock %}
+<p>Written by:  {{pitch.user.username}} <a href="/pitch/{{pitch.pitch_id}}" class="btn btn-primary pull-right">Comment</a> </p>
+</div>

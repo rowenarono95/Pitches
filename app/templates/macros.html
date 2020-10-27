@@ -1,13 +1,23 @@
 {% macro displayPitches(pitches_list)%}
     {%for pitch in pitches_list%}
-        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 review-card">
-            <div class="well well-lg">
-                <p></p>
-                <p>{{pitch.pitch_comment| truncate(100)}}</p>
-                <p>{{pitch.pitch_category}}</p>
-                <p>Written by:  {{pitch.user.username}} <a href="/pitch/{{pitch.pitch_id}}" class="btn btn-primary pull-right">Comment</a> </p>
-            </div>
-        </div>
+        
+
+                <!-- Card -->
+<div class="card card-image mt-5"
+style="background-image: url(https://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20%2814%29.jpg); background-repeat: no-repeat; background-size: cover; width: 450px;">
+
+<!-- Content -->
+<div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
+  <div>
+    <h3 class="card-title pt-2 pink-text"><strong>{{pitch.pitch_category}}</strong></h3>
+    <p>{{pitch.pitch_comment| truncate(100)}}</p>
+      <a href="/pitch/{{pitch.pitch_id}}" class="btn btn-pink pull-right text-white">Comment</a> 
+  
+  </div>
+</div>
+
+</div>
+
     {%endfor%}
 {%endmacro%}
 
