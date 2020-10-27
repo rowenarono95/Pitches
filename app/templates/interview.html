@@ -1,11 +1,10 @@
 {% extends 'base.html'%}
 
-
+{% import 'macros.html' as macro%}
+ 
 {% block content %}
-{% for X in interviewPitches %} 
 
-<h3>{{X.pitch_category}}</h3>
-<p>{{X.pitch_comment}}</p>
 
-{% endfor %}
+{{macro.displayPitches(interviewPitches)}}
+
 {% endblock %}

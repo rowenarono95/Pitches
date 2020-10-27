@@ -1,8 +1,8 @@
 from flask import render_template,request,redirect,url_for,abort
 from . import main
-from .forms import PitchesForm,UpdateProfile
+from .forms import PitchesForm,UpdateProfile,CommentForm
 from flask_login import login_required,current_user
-from ..models import Pitches, User
+from ..models import Pitches, User,Comment
 from ..import db, photos
 
 
@@ -86,4 +86,20 @@ def display_advertisement():
 @main.route('/category/product', methods=['POST','GET'])
 def display_product():
     pitches = Pitches.get_pitches('product')
-    return render_template('product.html',productPitches=pitches)        
+    return render_template('product.html',productPitches=pitches)      
+
+
+@main.route('/pitch/<int:id>')
+@login_required
+def comments(id):
+    comments = Comment.get_comments(id)
+    comment_form = CommentForm()
+    if comment_form.validate_on_submit():
+        comment = comment_form.text.data
+
+        new_comment = Comment(comment = comment,user = current_user,pitch_id = pitch)
+
+        new_comment.save_comment()
+
+
+    return render_template("comment.html", pitch = pitch, comment_form = comment_form, comments = comments, date = posted_date)      

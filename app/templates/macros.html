@@ -1,0 +1,21 @@
+{% macro displayPitches(pitches_list)%}
+    {%for pitch in pitches_list%}
+        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 review-card">
+            <div class="well well-lg">
+                <p></p>
+                <p>{{pitch.pitch_comment| truncate(100)}}</p>
+                <p>{{pitch.pitch_category}}</p>
+                <p>Written by:  {{pitch.user.username}} <a href="/pitch/{{pitch.pitch_id}}" class="btn btn-primary pull-right">Comment</a> </p>
+            </div>
+        </div>
+    {%endfor%}
+{%endmacro%}
+
+{%macro displayComments(comments_list)%}
+    {%for comment in comments_list%}
+        <div class="col-md-12">
+            <h5>{{comment.user.username}}</h5>
+            <p>{{comment.comment}}</p>
+        </div>
+    {%endfor%}
+{%endmacro%}
