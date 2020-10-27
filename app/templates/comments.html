@@ -5,7 +5,7 @@
 
 <div>
     {% if current_user.is_authenticated %}
-    {{ wtf.quick_form(commentForm) }}
+    {{ wtf.quick_form(comment_form) }}
     {%endif%}
     <h3>Display comments</h3>
     <p>{{macro.displayComments(comments)}}</p> 

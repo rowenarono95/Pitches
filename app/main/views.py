@@ -89,7 +89,7 @@ def display_product():
     return render_template('product.html',productPitches=pitches)      
 
 
-@main.route('/pitch/<int:id>')
+@main.route('/pitch/<int:id>', methods=['GET', 'POST'])
 @login_required
 def comments(id):
     comments = Comment.get_comments(id)
@@ -97,9 +97,9 @@ def comments(id):
     if comment_form.validate_on_submit():
         comment = comment_form.text.data
 
-        new_comment = Comment(comment = comment,user = current_user,pitch_id = pitch)
+        new_comment = Comment(comment = comment,user = current_user,pitch_id = id)
 
         new_comment.save_comment()
 
 
-    return render_template("comment.html", pitch = pitch, comment_form = comment_form, comments = comments, date = posted_date)      
+    return render_template("comments.html", comment_form = comment_form, comments = comments)      
