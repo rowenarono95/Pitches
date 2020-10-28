@@ -25,6 +25,8 @@ This  is a flask application that allows users to post one minute pitches and al
 ## Development Installation
 To get the code..
 
+## Live Link
+* <pitches34.herokuapp.com/>
 1. Cloning the repository:
   ```bash
   https://github.com/glasses-png/pitch.git
