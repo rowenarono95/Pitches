@@ -1,18 +1,16 @@
-from app.models import Comment,User,Pitch
-from app import db
 import unittest
+from app.models import Comments
 
-class CommentModelTest(unittest.TestCase):
+class CommentsTest(unittest.TestCase):
+    '''
+    Test Class to test the behaviour of the Comments
+    '''
+
     def setUp(self):
-        self.user_rono = User(username = 'rono',password = 'banana', email = 'rowenarono@gmail.com')
-        self.new_pitch = Pitch(id=1,pitch_comment='This is a test pitch',category="interview",user = self.user_rono,likes=0,dislikes=0)
-        self.new_comment = Comment(id=1,comment='Test comment',user=self.user_rono,pitch=self.new_pitch)
+        '''
+        Set up method that will run before every Test
+        '''
+        self.new_comment = Comments()
 
-    def tearDown(self):
-        Pitch.query.delete()
-        User.query.delete()
-
-    def test_check_instance_variables(self):
-        self.assertEquals(self.new_comment.comment,'Test comment')
-        self.assertEquals(self.new_comment.user,self.user_rono)
-        self.assertEquals(self.new_comment.pitch,self.new_pitch)
+    def test_instance(self):
+        self.assertTrue(isinstance(self.new_comment,Comments)))
