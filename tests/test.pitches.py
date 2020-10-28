@@ -4,8 +4,8 @@ import unittest
 
 class PitchModelTest(unittest.TestCase):
     def setUp(self):
-        self.user_rono = User(username = 'Peris',password = 'banana', email = 'rowenarono@gmail.com')
-        self.new_pitch = Pitch(id=1,pitch_title='Test',pitch_content='This is a test pitch',category="interview",user = self.user_Peris,likes=0,dislikes=0)
+        self.user_rono = User(username = 'rono',password = 'banana', email = 'rowenarono@gmail.com')
+        self.new_pitch = Pitch(id=1,pitch_comment='This is a test pitch',category="interview",user = self.user_rono,likes=0,dislikes=0)
 
     def tearDown(self):
         User.query.delete()
@@ -13,8 +13,7 @@ class PitchModelTest(unittest.TestCase):
       
 
     def test_check_instance_variables(self):
-        self.assertEquals(self.new_pitch.pitch_title,'Test')
-        self.assertEquals(self.new_pitch.pitch_content,'This is a test pitch')
+        self.assertEquals(self.new_pitch.pitch_comment,'This is a test pitch')
         self.assertEquals(self.new_pitch.category,"interview")
         self.assertEquals(self.new_pitch.user,self.user_rono)
 
