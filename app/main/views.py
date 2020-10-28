@@ -9,8 +9,15 @@ from ..import db, photos
 
 @main.route('/')
 def index():
-    return render_template ('index.html')
+    
+    # Getting reviews by category
+    allPitches = Pitches.query.all()
+    interview_piches = Pitches.get_pitches('interview')
+    product_piches = Pitches.get_pitches('product')
+    advertisement_pitches = Pitches.get_pitches('advertisement')
 
+
+    return render_template('index.html', interview = interview_piches, product = product_piches, advertisement = advertisement_pitches,pitches = allPitches)
 
 @main.route('/user/<uname>')
 @login_required
